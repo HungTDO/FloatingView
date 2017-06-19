@@ -501,7 +501,7 @@ public class FloatingViewManager implements ScreenChangedListener, View.OnTouchL
         final int matchIndex = mFloatingViewList.indexOf(floatingView);
         // 見つかった場合は表示とリストから削除
         if (matchIndex != -1) {
-            mWindowManager.removeViewImmediate(floatingView);
+            mWindowManager.removeView(floatingView);
             mFloatingViewList.remove(matchIndex);
         }
 
@@ -518,13 +518,13 @@ public class FloatingViewManager implements ScreenChangedListener, View.OnTouchL
      * ViewをWindowから全て取り外します。
      */
     public void removeAllViewToWindow() {
-        mWindowManager.removeViewImmediate(mFullscreenObserverView);
-        mWindowManager.removeViewImmediate(mTrashView);
+        mWindowManager.removeView(mFullscreenObserverView);
+        mWindowManager.removeView(mTrashView);
         // FloatingViewの削除
         final int size = mFloatingViewList.size();
         for (int i = 0; i < size; i++) {
             final FloatingView floatingView = mFloatingViewList.get(i);
-            mWindowManager.removeViewImmediate(floatingView);
+            mWindowManager.removeView(floatingView);
         }
         mFloatingViewList.clear();
     }
